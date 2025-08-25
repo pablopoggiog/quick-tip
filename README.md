@@ -1,36 +1,112 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Quick Tip - Avalanche
 
-## Getting Started
+A simple web application for sending quick tips on the Avalanche network using wagmi v2.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- 🔗 Connect/disconnect wallet (Core Wallet / EIP-1193)
+- 💰 Send tips in AVAX with optional notes
+- 🔍 Preview and simulate transactions before sending
+- ⏱️ Real-time finality timer
+- 📊 Recent tips history with explorer links
+- 🌐 Support for Avalanche Mainnet and Fuji Testnet
+- 💾 Local storage for tip history
+
+## Tech Stack
+
+- **Framework**: Next.js 15 (App Router, TypeScript)
+- **Web3**: wagmi v2 + viem
+- **State Management**: Zustand
+- **Styling**: Tailwind CSS
+- **Data Fetching**: @tanstack/react-query
+
+## Setup
+
+1. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+2. **Environment variables**:
+   Create a `.env.local` file in the root directory:
+   ```env
+   NEXT_PUBLIC_RECIPIENT=0x742d35Cc6634C0532925aApp3b8D4C9db96C4b4d8b6
+   ```
+   Replace with your actual recipient address.
+
+3. **Run the development server**:
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your browser**:
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## Usage
+
+1. **Connect Wallet**: Click "Connect Wallet" and approve the connection in your wallet
+2. **Switch Network**: Use the Mainnet/Fuji buttons to switch between networks
+3. **Send Tip**: 
+   - Enter the amount in AVAX
+   - Add an optional note
+   - Click "Simulate" to test the transaction
+   - Click "Send Tip" to execute the transaction
+4. **View History**: Check the "Recent Tips" section to see your transaction history
+
+## Configuration
+
+### Supported Networks
+- **Avalanche Mainnet** (Chain ID: 43114)
+- **Avalanche Fuji Testnet** (Chain ID: 43113)
+
+### Explorer Links
+- Mainnet: [https://snowtrace.io](https://snowtrace.io)
+- Fuji Testnet: [https://testnet.snowtrace.io](https://testnet.snowtrace.io)
+
+## Project Structure
+
+```
+quick-tip/
+├── app/
+│   ├── layout.tsx          # Root layout with providers
+│   ├── page.tsx            # Main page component
+│   └── providers.tsx       # Wagmi and React Query providers
+├── components/
+│   ├── Connect.tsx         # Wallet connection component
+│   ├── TipForm.tsx         # Tip sending form
+│   └── RecentTips.tsx      # Recent tips history
+├── lib/
+│   ├── wagmi.ts            # Wagmi configuration
+│   └── explorer.ts         # Explorer URL utilities
+└── store/
+    └── tips.ts             # Zustand store for tips
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Development
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
 
-## Learn More
+### Key Dependencies
 
-To learn more about Next.js, take a look at the following resources:
+- `wagmi` - React hooks for Ethereum
+- `viem` - TypeScript interface for Ethereum
+- `@tanstack/react-query` - Data fetching and caching
+- `zustand` - State management
+- `tailwindcss` - Utility-first CSS framework
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contributing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT
